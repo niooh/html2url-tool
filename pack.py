@@ -44,7 +44,7 @@ def main() -> None:
     ap.add_argument('--base', required=True, metavar='URL',
                     help='URL of .html; payload is appended as #fragment')
     ap.add_argument('-o', '--out', metavar='FILE',
-                    help='write the resulting URL here (default: %(default)s)')
+                    help='write the resulting URL to a file')
     a = ap.parse_args()
 
     src = pathlib.Path(a.input).read_bytes()

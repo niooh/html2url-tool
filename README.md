@@ -18,6 +18,7 @@ npm install
 
    ```bash
    npm run build  # index.html -> dist/index.html
+   # or: pnpm build
    npm run build page.html  # page.html -> dist/page.html
    ```
 
