@@ -41,3 +41,6 @@ npm install
 
 - Long URLs may get truncated by browsers and chat apps.
 - The packed page is sandboxed: no cookies, no `localStorage` of the host.
+
+## License
+  MIT, Copyright (c) 2026 niooh
