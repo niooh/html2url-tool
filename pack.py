@@ -43,7 +43,7 @@ def main() -> None:
                     help='HTML file to pack')
     ap.add_argument('--base', required=True, metavar='URL',
                     help='URL of .html; payload is appended as #fragment')
-    ap.add_argument('-o', '--out', default='url.txt', metavar='FILE',
+    ap.add_argument('-o', '--out', metavar='FILE',
                     help='write the resulting URL here (default: %(default)s)')
     a = ap.parse_args()
 
@@ -54,7 +54,9 @@ def main() -> None:
     payload = base64.urlsafe_b64encode(packed).decode().rstrip('=')
     url = f"{a.base}#{payload}"
 
-    pathlib.Path(a.out).write_text(url, encoding='utf-8')
+    if a.out:
+        pathlib.Path(a.out).write_text(url, encoding='utf-8')
+
     print(url)
 
 

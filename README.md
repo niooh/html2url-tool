@@ -1,6 +1,6 @@
 # html2url-tool
 
-Pack a whole HTML page into a URL.
+A simple tool that packs an HTML page into a URL.
 
 ## Install
 
@@ -27,16 +27,15 @@ npm install
    python pack.py page.html --base https://example.com/index.html
    ```
 
-   The URL is written to `url.txt` and printed.
+3. The URL is printed, you can open it in a browser.
 
-3. Open the URL in a browser.
+## Options for pack.py
 
-## Options
-
-| Flag           | Meaning                                              |
-| -------------- | ---------------------------------------------------- |
-| `--base URL`   | URL of `index.html`; payload is appended as `#fragment` |
-| `-o, --out`    | Output file (default `url.txt`)                      |
+| Flag         | Meaning             |
+| ------------ | ------------------- |
+| `--base URL` | URL of `index.html` |
+| `-o, --out`  | Output file         |
+| `-h, --help` | Show help           |
 
 ## Limits
 
