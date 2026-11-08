@@ -2,7 +2,8 @@
   "name": "html2url-tool",
   "type": "module",
   "scripts": {
-    "build": "node compress.ts"
+    "build": "node compress.ts",
+    "pack": "python pack.py"
   },
   "dependencies": {
     "html-minifier-terser": "^7.2.0",

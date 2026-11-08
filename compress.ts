@@ -39,8 +39,6 @@ async function main() {
     removeEmptyAttributes: true,
     removeOptionalTags: true,
     useShortDoctype: true,
-    sortAttributes: true,
-    sortClassName: true,
     minifyCSS: true,
     minifyJS: true,
     minifyURLs: true,
