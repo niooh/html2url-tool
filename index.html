@@ -8,17 +8,16 @@ body{margin:0;padding:24px;font-size:30px}
 <pre id="lg">Decompressing…</pre>
 <script>
 (async () => {
+  const log = document.getElementById('lg');
   const fail = m => {
-    const log = document.getElementById('lg');
     log.style.color = 'red';
     log.textContent = m;
   };
-
   const s = location.hash.slice(1);
   if (!s) return fail('No payload. Usage: *.html#<payload>');
 
   try {
-    const bin = atob(s.replace(/-/g, '+').replace(/_/g, '/'));
+    const bin = atob(s.replace(/[_-]/g, c => c === '-' ? '+' : '/'))
     const bytes = Uint8Array.from(bin, ch => ch.charCodeAt(0));
 
     const html = await new Response(

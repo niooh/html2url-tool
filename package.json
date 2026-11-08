@@ -1,0 +1,11 @@
+{
+  "name": "html2url-tool",
+  "type": "module",
+  "scripts": {
+    "build": "node compress.ts"
+  },
+  "dependencies": {
+    "html-minifier-terser": "^7.2.0",
+    "oxc-minify": "^0.157.0"
+  }
+}

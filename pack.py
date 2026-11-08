@@ -26,22 +26,17 @@ class ColorHelpFormatter(argparse.HelpFormatter):
 
     def add_argument(self, action):
         if action.help is not argparse.SUPPRESS:
-            invocations = [self._format_action_invocation(action)]
-            for sub in self._iter_indented_subactions(action):
-                invocations.append(self._format_action_invocation(sub))
-            width = max(len(_ANSI.sub('', i)) for i in invocations)
+            w = len(_ANSI.sub('', self._format_action_invocation(action)))
             self._action_max_length = max(
-                self._action_max_length, width + self._current_indent
+                self._action_max_length, w + self._current_indent
             )
             self._add_item(self._format_action, [action])
-
 
 def main() -> None:
     ap = argparse.ArgumentParser(
         prog='pack.py',
         description='Pack an HTML file into a self-extracting URL for .html',
-        epilog='example:\n'
-               '  python pack.py page.html --base https://example.com/index.html',
+        epilog='example:\n  python pack.py page.html --base https://example.com/index.html',
         formatter_class=ColorHelpFormatter,
     )
     ap.add_argument('input', metavar='FILE',
