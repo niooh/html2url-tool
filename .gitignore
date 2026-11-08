@@ -1,0 +1,10 @@
+/node_modules/
+/dist/
+*.log
+pwd_report.md
+
+.vscode/*
+.idea/
+*.swp
+*.swo
+.session

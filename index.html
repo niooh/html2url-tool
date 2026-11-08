@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>index</title>
+<style>
+body{margin:0;padding:24px;font-size:30px}
+</style>
+<pre id="lg">Decompressing…</pre>
+<script>
+(async () => {
+  const fail = m => {
+    const log = document.getElementById('lg');
+    log.style.color = 'red';
+    log.textContent = m;
+  };
+
+  const s = location.hash.slice(1);
+  if (!s) return fail('No payload. Usage: *.html#<payload>');
+
+  try {
+    const bin = atob(s.replace(/-/g, '+').replace(/_/g, '/'));
+    const bytes = Uint8Array.from(bin, ch => ch.charCodeAt(0));
+
+    const html = await new Response(
+      new Response(bytes).body.pipeThrough(new DecompressionStream('deflate-raw'))
+    ).text();
+
+    const frame = document.createElement('iframe');
+    frame.sandbox = 'allow-scripts allow-forms allow-popups allow-modals';
+    frame.style.cssText = 'position:fixed;inset:0;border:0;';
+    frame.srcdoc = html;
+    document.body.replaceChildren(frame);
+  } catch (e) {
+    fail('Decompress failed: ' + e.message);
+  }
+})();
+</script>
